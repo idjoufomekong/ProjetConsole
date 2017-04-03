@@ -26,20 +26,41 @@ namespace Job_Overview
         RPT = 128,
         TES = 256,
         GDP = 512,
-
     }
+
     #endregion
-    class Metier
+    public class Metier
     {
-        static void MetierActivite()
+        #region Champs privés
+        private const Activités _ANA = (Activités.DBE | Activités.ARF | Activités.ANF);
+        private const Activités _CDP = (Activités.ARF | Activités.ANF | Activités.ART | Activités.TES | Activités.GDP);
+        private const Activités _DEV = (Activités.ANF | Activités.ART | Activités.ANT | Activités.DEV | Activités.TES);
+        private const Activités _DES = (Activités.ANF | Activités.DES | Activités.INF);
+        private const Activités _TES = (Activités.RPT | Activités.GDP);
+        #endregion
+
+
+
+
+        #region Propriétés      
+        /// <summary>
+        /// Le statut designe le type de métier de la personne c'est à dire ANA, CDP, DEV, DES et TES
+        /// </summary>
+        public Activités ANA { get { return _ANA; } }
+        public Activités CDP { get { return _CDP; } }
+        public Activités DEV { get { return _DEV; } }
+        public Activités DES { get { return _DES; } }
+        public Activités TES { get { return _TES; } }
+        #endregion
+
+        #region Constructeurs
+        public Metier()
         {
-            var ANA = new Employé(Activités.DBE | Activités.ARF | Activités.ANF);
-            var CDP = new Employé(Activités.ARF | Activités.ANF | Activités.ART | Activités.TES | Activités.GDP);
-            var DEV = new Employé(Activités.ANF | Activités.ART | Activités.ANT | Activités.DEV | Activités.TES);
-            var DES = new Employé(Activités.ANF | Activités.DES | Activités.INF);
-            var TES = new Employé(Activités.RPT | Activités.GDP);
 
         }
+        #endregion
+
 
     }
 }
+
