@@ -22,6 +22,10 @@ namespace Job_Overview
         {
             get { return _data; }
         }
+        public string Logiciel
+        {
+            get { return _LOGICIEL; }
+        }
         #endregion
 
         #region Constructeurs
@@ -74,16 +78,42 @@ namespace Job_Overview
                 }
             }
         }
-
-        public string[] Versions()
+        /// <summary>
+        /// Liste de versions du logiciel
+        /// </summary>
+        /// <returns></returns>
+        public List<string> Versions()
         {
             //DonnéesTâcheProd données = new DonnéesTâcheProd();
             
-            var b = Data.Select(c => c.Version);
+            var b = Data.Select(c => c.Version).Distinct();
             int nbreVersion = b.Count();
-            string[] s = new string[2];
+            List<string> s = new List<string>();
 
+            foreach(var a in b)
+            {
+                s.Add(a);
+            }
             return s;
+        }
+
+        /// <summary>
+        /// Liste des métiers et activités associées
+        /// </summary>
+
+        public List<string> MétiersEtActivités()
+        {
+            var personnes = Data.Select(c => c.Personne).Distinct(); //Liste de tâches par personne
+            List<string> liste1 = new List<string>();
+            List<string, List<string>> liste2 = new List<string, List<string>>();
+            foreach ( var a in personnes)
+            {
+
+                var activités = Data.Where(c => c.Personne == a).Distinct().Select(c => c.Activité);
+                //liste.Add(activités);
+                activités.ToList();
+            }
+            return liste1;
         }
 
         #endregion
