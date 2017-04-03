@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dal.cs" />
-    <Compile Include="DescriptionTache.cs" />
+    <Compile Include="Result.cs" />
     <Compile Include="Employé.cs" />
     <Compile Include="Metier.cs" />
     <Compile Include="Program.cs" />
