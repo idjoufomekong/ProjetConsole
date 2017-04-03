@@ -12,6 +12,8 @@ namespace Job_Overview
         private string _nom;
         private string _prenom;
         private Activités _statut;
+        private string _code;
+        private int _CumulTempsTA;
         #endregion
 
 
@@ -40,6 +42,7 @@ namespace Job_Overview
         /// </summary>
         public void CalculCumulTA()
         {
+
 
         }
 

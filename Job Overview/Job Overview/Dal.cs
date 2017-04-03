@@ -8,7 +8,8 @@ namespace Job_Overview
 {
     class Dal
     {
-
+        List<Activités> B = new List<Activités>();
+     
 
     }
 }
