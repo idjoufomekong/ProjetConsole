@@ -10,6 +10,12 @@ namespace Job_Overview
     {
         static void Main(string[] args)
         {
+
+            Console.WriteLine("Veuillez saisir les activités annexes (Code et Libellé :\n");
+            Console.WriteLine("Veuillez saisir le code de l'activité :\n");
+
+
+
             Console.WriteLine("test ok");
             Console.ReadKey();
         }
