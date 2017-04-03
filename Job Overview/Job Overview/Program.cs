@@ -13,6 +13,7 @@ namespace Job_Overview
 
             Console.WriteLine("Veuillez saisir les activités annexes (Code et Libellé :\n");
             Console.WriteLine("Veuillez saisir le code de l'activité :\n");
+            //var GL = new Employé("Geneviève", "LECLERCQ", Metier._ANA);
 
 
 
