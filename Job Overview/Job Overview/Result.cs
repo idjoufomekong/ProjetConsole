@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Job_Overview
 {
-    class DescriptionTache
+    class Result
     {
         #region MyRegion
 
