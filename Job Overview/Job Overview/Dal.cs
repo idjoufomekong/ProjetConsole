@@ -8,8 +8,27 @@ namespace Job_Overview
 {
     class Dal
     {
-        List<Activités> B = new List<Activités>();
-     
+
+        public void ListeMetier()
+        {
+            List<Activités> B = new List<Activités>();
+
+        }
+
+        public void ListeEmployé()
+        {
+            List<Employé> E = new List<Employé>();
+
+
+        }
+        public void ListeTache()
+        {
+
+        }
+        public void ListeLogiciel()
+        {
+
+        }
 
     }
 }
