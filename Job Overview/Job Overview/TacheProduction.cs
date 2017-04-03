@@ -9,7 +9,7 @@ namespace Job_Overview
     /// <summary>
     /// Cette classe gère les tâches liées aux activités de production
     /// </summary>
-    class TacheProduction
+    class TacheProduction: Tache
     {
         #region Propriétés
         public int NumTâche { get; }

@@ -49,6 +49,7 @@
     <Compile Include="Metier.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tache.cs" />
     <Compile Include="TacheAnnexe.cs" />
     <Compile Include="TacheProduction.cs" />
     <Compile Include="Version.cs" />

@@ -8,6 +8,14 @@ namespace Job_Overview
 {
     class Dal
     {
+        #region Champs privés
+        private List<Metier> _listeMétier = new List<Metier>();
+        private List<Employé> _listeEmployé = new List<Employé>();
+        private List<>
+
+        #endregion
+        #region Propriétés
+
 
         public void ListeMetier()
         {
@@ -21,7 +29,7 @@ namespace Job_Overview
 
 
         }
-        public void ListeTache()
+        public void ListeTache(
         {
 
         }
@@ -29,6 +37,19 @@ namespace Job_Overview
         {
 
         }
+        #endregion
+
+        #region Constructeurs
+
+        #endregion
+
+        #region Méthodes privées
+
+        #endregion
+
+        #region Méthodes publiques
+
+        #endregion
 
     }
 }

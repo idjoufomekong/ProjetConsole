@@ -23,7 +23,7 @@ namespace Job_Overview
         public int DuréePrévue { get; set; }
 
         #endregion
-
+         
         #region Constructeurs
 
         #endregion
