@@ -9,11 +9,18 @@ namespace Job_Overview
     /// <summary>
     /// Cette classe gère les tâches liées aux activités de production
     /// </summary>
-    class TacheProduction: Tache
+    public class TacheProduction: Tache
     {
         #region Propriétés
         public int NumTâche { get; }
         public int NomTâche { get; }
+        #endregion
+
+        #region constructeur
+        public TacheProduction(string a, int b) : base (a,b)
+        {
+
+        }
         #endregion
     }
 }

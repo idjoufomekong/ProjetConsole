@@ -17,11 +17,25 @@ namespace Job_Overview
         private DateTime _dateFin;
         #endregion
         #region Propriétés
-        public int CodeTâche { get; }
-        public int LibelléTâche { get; }
+        public int CodeTâche { get { return _codeTâche; } }
+        public string LibelléTâche { get { return _libelléTâche; } }
         public int DuréeTâche { get; }
         public DateTime DateDébut { get { return _dateDébut; } }
         public DateTime DateFin { get { return _dateFin; } }
         #endregion
+        #region constructeur
+        public Tache(string libellé, int code)
+        {
+            _codeTâche = code;
+            _libelléTâche = libellé;
+        }
+        #endregion
+        #region Méthode public
+        public string Affichage()
+        {
+            return string.Format("Code : {0}\nLibellé {1}\n\n", _codeTâche, _libelléTâche);   
+        }
+        #endregion
     }
+
 }
