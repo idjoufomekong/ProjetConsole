@@ -81,8 +81,9 @@ namespace Job_Overview
             
             var b = Data.Select(c => c.Version);
             int nbreVersion = b.Count();
+            string[] s = new string[2];
 
-            return;
+            return s;
         }
 
         #endregion
