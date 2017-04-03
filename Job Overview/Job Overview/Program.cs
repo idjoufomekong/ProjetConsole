@@ -83,6 +83,34 @@ namespace Job_Overview
             Console.WriteLine("Le logiciel {0} compte {1} versions qui sont: {2}",
                 données.Logiciel, versions.Count(), s);
 
+            
+            //Affichage de la liste des métiers et activités associées
+            List<string> métiers = données.MétiersEtActivités();
+            Console.WriteLine("La liste des métiers est la suivante");
+            
+            foreach(var a in métiers)
+            {
+                Console.WriteLine(a.ToString());
+            }
+
+            //Affichade de la liste de personnes avec leur métier
+            List<string> personnes = données.PersonnesEtMétier();
+            Console.WriteLine("\nLa liste des personnes avec leur métier est la suivante");
+
+            foreach (var a in personnes)
+            {
+                Console.WriteLine(a.ToString());
+            }
+
+            //Affichade de la liste des tâches
+            List<string> tâches = données.ListeTâches();
+            Console.WriteLine("\nLa liste des tâches est la suivante");
+
+            foreach (var a in tâches)
+            {
+                Console.WriteLine(a.ToString());
+            }
+
             Console.ReadKey();
         }
 

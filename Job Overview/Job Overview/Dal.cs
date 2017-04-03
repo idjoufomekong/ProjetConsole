@@ -103,17 +103,110 @@ namespace Job_Overview
 
         public List<string> MétiersEtActivités()
         {
-            var personnes = Data.Select(c => c.Personne).Distinct(); //Liste de tâches par personne
+            Metier m = new Metier();
+            string p;
+            string s = string.Empty;
+
+
+            List<string> listeMétiers = new List<string>();
+            List<string> listeMétiers1 = new List<string>();
+            var personnes = Data.Select(c => c.Personne).Distinct(); //Liste unique de personnes
+            //var activités = Data.Select(c => c.Activité).Distinct();
             List<string> liste1 = new List<string>();
            // List<string, List<string>> liste2 = new List<string, List<string>>();
             foreach ( var a in personnes)
             {
-
-                var activités = Data.Where(c => c.Personne == a).Distinct().Select(c => c.Activité);
-                //liste.Add(activités);
-                activités.ToList();
+                Activités l;
+                var activités = Data.Where(c => c.Personne == a).Select(c => c.Activité).Distinct();
+                liste1 = activités.ToList();
+                l = Activités.Aucun;
+                //l = l | (Activités) Enum.Parse(typeof(Activités), liste1.First());
+                foreach (var b in liste1)
+                {
+                    l = l | (Activités)Enum.Parse(typeof(Activités), b);
+                    
+                }
+                p = m.RetournerMétier(l);
+                //if (p.Contains("")) continue;
+                listeMétiers.Add(p);
+                
+                
             }
-            return liste1;
+            var listemétiersuniques = listeMétiers;
+            //foreach (var a in listeMétiers) listemétiersuniques.Add(a);
+           //listeMétiers.Clear();
+            foreach(var c in listeMétiers)
+            {
+                if ((c.CompareTo("")) == 0) continue;
+                s = c  + ": " + m.RetournerActivités(c);
+                listeMétiers1.Add(string.Format(s));
+            }
+            
+
+            return listeMétiers1;
+        }
+        /// <summary>
+        /// Liste de personnes avec leur métier
+        /// </summary>
+        public List<string> PersonnesEtMétier()
+        {
+            Metier m = new Metier();
+            string p;
+            string s = string.Empty;
+            List<string> listeMétiers = new List<string>();
+            Dictionary<string,string> dico = new Dictionary<string,string>();
+            var personnes = Data.Select(c => c.Personne).Distinct(); //Liste unique de personnes
+            
+            List<string> liste1 = new List<string>();
+           
+            foreach (var a in personnes)
+            {
+                Activités l;
+                var activités = Data.Where(c => c.Personne == a).Select(c => c.Activité).Distinct();
+                liste1 = activités.ToList();
+                l = Activités.Aucun;
+                
+                foreach (var b in liste1)
+                {
+                    l = l | (Activités)Enum.Parse(typeof(Activités), b);
+
+                }
+                p = m.RetournerMétier(l);
+                dico.Add(a, p);
+                
+            }
+            
+            
+            foreach (var c in dico)
+            {
+                s = string.Format("L'employé {0} a pour métier {1}", c.Key, c.Value);
+                listeMétiers.Add(s);
+            }
+            return listeMétiers;
+
+        }
+
+        public List<string> ListeTâches()
+        {
+            List<string> liste = new List<string>();
+            string s,p;
+            int j;
+            var liste1 = Data.Select(c => c.LibTache).Distinct();
+            foreach(var a in liste1)
+            {
+                s = a.ToString();
+                int i = s.IndexOf('-');
+                //s = s.Substring(i + 1);
+                s = s.Substring(i + 2);
+                //char[] tab = s.ToCharArray();
+                //for(int z = tab.Length-2; z>0; z--)
+                //{
+                //    if(tab[z].CompareTo(' ') == 0)
+                        
+                //}
+                liste.Add(s);
+            }
+            return liste;
         }
 
         #endregion
