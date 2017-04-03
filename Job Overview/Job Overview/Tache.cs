@@ -31,9 +31,9 @@ namespace Job_Overview
         }
         #endregion
         #region Méthode public
-        public string Affichage()
+        public string Affichage(int a, string b)
         {
-            return string.Format("Code : {0}\nLibellé {1}\n\n", _codeTâche, _libelléTâche);   
+            return string.Format("Code : {0}\nLibellé {1}\n\n", a, b);   
         }
         #endregion
     }
