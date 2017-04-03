@@ -105,7 +105,7 @@ namespace Job_Overview
         {
             var personnes = Data.Select(c => c.Personne).Distinct(); //Liste de tâches par personne
             List<string> liste1 = new List<string>();
-            List<string, List<string>> liste2 = new List<string, List<string>>();
+           // List<string, List<string>> liste2 = new List<string, List<string>>();
             foreach ( var a in personnes)
             {
 
