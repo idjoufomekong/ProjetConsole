@@ -21,7 +21,7 @@ namespace Job_Overview
 
         #endregion
         #region Constructeurs
-        public TacheAnnexe(string nom, int durée, DateTime début, DateTime fin)
+        public TacheAnnexe(string nom, int durée) : base (nom, durée)
         {
             
         }
