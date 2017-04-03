@@ -24,6 +24,10 @@ namespace Job_Overview
         public DateTime DateFin { get { return _dateFin; } }
         #endregion
         #region constructeur
+        public Tache()
+        {
+
+        }
         public Tache(string libellé, int code)
         {
             _codeTâche = code;
@@ -35,6 +39,9 @@ namespace Job_Overview
         {
             return string.Format("Code : {0}\nLibellé {1}\n\n", a, b);   
         }
+        
+      
+
         #endregion
     }
 

@@ -14,22 +14,51 @@ namespace Job_Overview
             int nombre = 1; // declaration et initialisation de nombre
 
             SortedList<int, string> EntréeTaches = new SortedList<int, string>();
+            /// <summary>
+            /// creation d'une boucle afin de rentrer la liste des taches par l'utilisateur. 
+            /// l'utilisateur doit rentrer le chiffre 0 s'il a terminé d'entrer ses activités annexes
+            /// </summary>
 
-            while (nombre != 0)//creation d'une boucle afin de rentrer la liste des taches par l'utilisateur. 
-                               //l'utilisateur doit rentrer le chiffre 0 s'il a terminé d'entrer ses activités annexes
+            while (nombre != 0)
+
             {
-
+                bool codeUnique;
+                int b;
+                string a;
                 Console.WriteLine("Veuillez saisir le code de la tache a ajouter :");
-                int b = int.Parse(Console.ReadLine());
-                // Console.WriteLine("Le code saisi est : {0}\n", b);
-                Console.WriteLine("Veuillez saisir le libellé de la tache a ajouter :");
-                string a = Console.ReadLine();
-                // Console.WriteLine("Le libellé correspondant au code {0} est : {1}\n", b, a);
-                Tache n = new Tache(a, b);
-                EntréeTaches.Add(b, a);
-                Console.WriteLine("Veuillez rentrer 0 si vous ne souhaitez pas rentrer de nouvelles tache sinon, veuillez entrer une valeur différente à 0");
-                nombre = int.Parse(Console.ReadLine());
+                try
+                {
+                    string test;
+                    b = int.Parse(Console.ReadLine());
+                    //pour le code b y a t-il un string deja existant dans EntréeTaches ?
+                    codeUnique = EntréeTaches.TryGetValue(b, out test);
+                    while (codeUnique == true)
+                    {
+                        Console.WriteLine("Erreur : Chaque code d'activité doit être unique");
+                        Console.WriteLine("Veuillez saisir le code de la tache a ajouter :");
+                        b = int.Parse(Console.ReadLine());                      
+                        codeUnique = EntréeTaches.TryGetValue(b, out test);
+                    }
+                      
 
+                    Console.WriteLine("Veuillez saisir le libellé de la tache a ajouter :");
+                    a = Console.ReadLine();
+                    // Console.WriteLine("Le libellé correspondant au code {0} est : {1}\n", b, a);
+                    Tache n = new Tache(a, b);
+                    EntréeTaches.Add(b, a);
+                    Console.WriteLine("Veuillez rentrer 0 si vous ne souhaitez pas rentrer de nouvelles tache sinon, veuillez entrer une valeur différente à 0");
+                    nombre = int.Parse(Console.ReadLine());
+                    Console.WriteLine("");
+
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Erreur : Veuillez entrer un chiffre");
+                }
+               
+                
+
+                
             }
 
             Console.Clear();
@@ -45,5 +74,13 @@ namespace Job_Overview
 
             Console.ReadKey();
         }
+    
+            
+                
+            
+            
+        
+
+
     }
 }
