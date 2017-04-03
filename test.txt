@@ -1,4 +1,0 @@
-var p = from a in anx
-where a is 
-
-console.writeline("bonjour");
