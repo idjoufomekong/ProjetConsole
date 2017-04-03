@@ -10,6 +10,8 @@ namespace Job_Overview
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("test");
+            Console.ReadKey();
         }
     }
 }
