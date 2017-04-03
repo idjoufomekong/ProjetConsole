@@ -28,7 +28,7 @@ namespace Job_Overview
                 Console.WriteLine("Veuillez saisir le code de la tache a ajouter :");
                 try
                 {
-                    string test;
+                    string test; 
                     b = int.Parse(Console.ReadLine());
                     //pour le code b y a t-il un string deja existant dans EntréeTaches ?
                     codeUnique = EntréeTaches.TryGetValue(b, out test);
@@ -36,10 +36,10 @@ namespace Job_Overview
                     {
                         Console.WriteLine("Erreur : Chaque code d'activité doit être unique");
                         Console.WriteLine("Veuillez saisir le code de la tache a ajouter :");
-                        b = int.Parse(Console.ReadLine());                      
+                        b = int.Parse(Console.ReadLine());
                         codeUnique = EntréeTaches.TryGetValue(b, out test);
                     }
-                      
+
 
                     Console.WriteLine("Veuillez saisir le libellé de la tache a ajouter :");
                     a = Console.ReadLine();
@@ -55,10 +55,10 @@ namespace Job_Overview
                 {
                     Console.WriteLine("Erreur : Veuillez entrer un chiffre");
                 }
-               
-                
 
-                
+
+
+
             }
 
             Console.Clear();
@@ -69,17 +69,28 @@ namespace Job_Overview
                 Console.WriteLine("Code : {0}\nLibellé {1}\n\n", a.Key, a.Value);
             }
 
+            //Chargement du fichier de données
             Dal données = new Job_Overview.Dal();
             données.ChargerDonnées();
 
+            //Affichage du logiciel et des versions
+            string s = string.Empty;
+            List<string> versions = données.Versions();
+            foreach (var a in versions)
+            {
+                s += a + ", ";
+            }
+            Console.WriteLine("Le logiciel {0} compte {1} versions qui sont: {2}",
+                données.Logiciel, versions.Count(), s);
+
             Console.ReadKey();
         }
-    
-            
-                
-            
-            
-        
+
+
+
+
+
+
 
 
     }
