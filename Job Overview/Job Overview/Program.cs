@@ -39,7 +39,7 @@ namespace Job_Overview
                 Numéro = "1.00",
                 Millésime = 2017,
                 DateDébut = new DateTime(02, 01, 16),
-                DatePubli = new DateTime(08, 01, 17)
+                DatePubli = new DateTime(08, 01, 17),
             };
             versions1.Add(v1);
             Version v2 = new Version
@@ -52,6 +52,76 @@ namespace Job_Overview
             versions1.Add(v2);
 
 
+            //Création de taches de production
+            List<TacheProduction> listeprod = new List<TacheProduction>();
+            TacheProduction t1 = new TacheProduction(54, "Tache 1")
+            {
+                DureePrevue = 60,
+                DureeRealise = 21,
+                DureeRestante = 39,           
+                CodeEmployé = "GL"
+            };
+            listeprod.Add(t1);
+
+            TacheProduction t2 = new TacheProduction(74, "Tache 2")
+            {
+                DureePrevue = 70,
+                DureeRealise = 31,
+                DureeRestante = 39,
+                CodeEmployé = "GL"
+            };
+            listeprod.Add(t2);
+
+            TacheProduction t3 = new TacheProduction(42, "Tache 3")
+            {
+                DureePrevue = 80,
+                DureeRealise = 21,
+                DureeRestante = 59,
+                CodeEmployé = "GL"
+            };
+            listeprod.Add(t3);
+
+            Console.WriteLine(t3.ModificationDureeRestante(10));
+
+            Console.ReadKey();
+            Console.Clear();
+
+
+            //création de taches annexes
+            TacheAnnexe tA1 = new TacheAnnexe("Tache 1", 31, 45, new DateTime(2017,2,12))
+            {
+                CodeEmployé = "GL",
+                
+                
+            };
+            TacheAnnexe.TacheA.Add(tA1);
+
+            TacheAnnexe tA2 = new TacheAnnexe("Tache 2", 74, 87, DateTime.Today)
+            {
+                CodeEmployé = "GL"
+                
+            };
+            TacheAnnexe.TacheA.Add(tA2);
+
+            TacheAnnexe tA3 = new TacheAnnexe("Tache 3", 82, 55, new DateTime(2017, 5, 5,0,0,0,0))
+            {
+                CodeEmployé = "HK"
+            };
+            TacheAnnexe.TacheA.Add(tA3);
+
+            TacheAnnexe tA4 = new TacheAnnexe("Tache 3", 87, 12, new DateTime(2017, 5, 10))
+            {
+                CodeEmployé = "NP"
+            };
+            TacheAnnexe.TacheA.Add(tA4);
+
+            //on affiche le cumul de la durée consacrée a réaliser une tache annexe
+            Console.WriteLine(tA1.CumulTacheAEmployé("GL"));
+            Console.WriteLine(tA1.CumulTaches("Tache 3"));
+            Console.WriteLine(tA1.CumulTachesMois("Tache 3"));
+
+            Console.ReadKey();
+            Console.Clear();
 
 
             //Suivi de la classe DAL
