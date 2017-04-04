@@ -161,9 +161,19 @@ namespace Job_Overview
             ret.CalculNombreJour(out retard);
             Console.WriteLine("Nombre de jours d'avance ou de retard : {0}", retard);
 
+            // Affichade de la liste de la durée totale de travail par activités pour la version 1
+            Result listeb = new Result();
+            Console.WriteLine("\nAffichade de la liste de la durée totale de travail par activités pour la version 1");
+            Console.WriteLine(listeb.CalculDureeTotal1());
+
+            // Affichade de la liste de la durée totale de travail par activités pour la version 2
+            Console.WriteLine("\nAffichade de la liste de la durée totale de travail par activités pour la version 2");
+            Console.WriteLine(listeb.CalculDureeTotal2());
 
 
-           Console.ReadKey();
+
+
+            Console.ReadKey();
         }
 
 
