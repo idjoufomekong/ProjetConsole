@@ -52,6 +52,66 @@ namespace Job_Overview
             versions1.Add(v2);
 
 
+
+
+            //Suivi de la classe DAL
+            Console.WriteLine("Gestion de la classe DAL\n");
+            //Chargement du fichier de données
+            Dal données = new Job_Overview.Dal();
+            données.ChargerDonnées();
+
+            //Affichage du logiciel et des versions
+            string s = string.Empty;
+            List<string> versions = données.Versions();
+            foreach (var a in versions)
+            {
+                s += a + ", ";
+            }
+            Console.WriteLine("Le logiciel {0} compte {1} versions qui sont: {2}",
+                données.Logiciel, versions.Count(), s);
+            Console.ReadKey();
+            Console.Clear();
+
+            //Affichage de la liste des métiers et activités associées
+            List<string> métiers = données.MétiersEtActivités();
+            Console.WriteLine("La liste des métiers est la suivante :\n");
+
+            foreach (var a in métiers)
+            {
+                Console.WriteLine(a.ToString());
+            }
+
+            Console.ReadKey();
+            Console.Clear();
+
+            //Affichade de la liste de personnes avec leur métier
+            List<string> personnes = données.PersonnesEtMétier();
+            Console.WriteLine("La liste des personnes avec leur métier est la suivante :\n");
+
+            foreach (var a in personnes)
+            {
+                Console.WriteLine(a.ToString());
+            }
+
+            Console.ReadKey();
+            Console.Clear();
+
+            //Affichade de la liste des tâches
+            List<string> tâches = données.ListeTâches();
+            Console.WriteLine("La liste des tâches est la suivante :\n");
+
+            foreach (var a in tâches)
+            {
+                Console.WriteLine(a.ToString());
+            }
+
+            Console.ReadKey();
+            Console.Clear();
+
+
+
+            //Saisie de la liste des activités annexes
+            Console.WriteLine("Saisi des activités annexes\n");
             int nombre = 1; // declaration et initialisation de nombre
 
             SortedList<int, string> EntréeTaches = new SortedList<int, string>();
@@ -83,7 +143,7 @@ namespace Job_Overview
                     // Console.WriteLine("Le libellé correspondant au code {0} est : {1}\n", b, a);
                     Tache n = new Tache(a, b);
                     EntréeTaches.Add(b, a);
-                    Console.WriteLine("Veuillez rentrer 0 si vous ne souhaitez pas rentrer de nouvelles tache sinon, veuillez entrer une valeur différente à 0");
+                    Console.WriteLine("Veuillez entrer une valeur différente à 0.\nPour sortir, entrez 0.\n");
                     nombre = int.Parse(Console.ReadLine());
                     Console.WriteLine("");
 
@@ -93,65 +153,30 @@ namespace Job_Overview
                     Console.WriteLine("Erreur : Veuillez entrer un chiffre");
                 }
 
-
-
-
             }
 
             Console.Clear();
-
+            //affichage des activités annexes saisies
+            Console.WriteLine("Liste des activités annexes saisies classées selon leur code :\n");
             foreach (var a in EntréeTaches)
             {
                 Console.WriteLine("Code : {0}\nLibellé {1}\n\n", a.Key, a.Value);
             }
-
-            //Chargement du fichier de données
-            Dal données = new Job_Overview.Dal();
-            données.ChargerDonnées();
-
-            //Affichage du logiciel et des versions
-            string s = string.Empty;
-            List<string> versions = données.Versions();
-            foreach (var a in versions)
-            {
-                s += a + ", ";
-            }
-            Console.WriteLine("Le logiciel {0} compte {1} versions qui sont: {2}",
-                données.Logiciel, versions.Count(), s);
+            Console.ReadKey();
+            Console.Clear();
 
 
-            //Affichage de la liste des métiers et activités associées
-            List<string> métiers = données.MétiersEtActivités();
-            Console.WriteLine("La liste des métiers est la suivante");
 
-            foreach (var a in métiers)
-            {
-                Console.WriteLine(a.ToString());
-            }
 
-            //Affichade de la liste de personnes avec leur métier
-            List<string> personnes = données.PersonnesEtMétier();
-            Console.WriteLine("\nLa liste des personnes avec leur métier est la suivante");
 
-            foreach (var a in personnes)
-            {
-                Console.WriteLine(a.ToString());
-            }
 
-            //Affichade de la liste des tâches
-            List<string> tâches = données.ListeTâches();
-            Console.WriteLine("\nLa liste des tâches est la suivante");
-
-            foreach (var a in tâches)
-            {
-                Console.WriteLine(a.ToString());
-            }
-
+            //Suivie de la production
+            Console.WriteLine("Suivi de la production\n");
 
 
 
             //Permet d'afficher les durées du travail restant et réalisé par une personne en rentrant son initial
-            Console.WriteLine("Veuillez saisir l'initial du prenom de la personne souhaité puis le nom afin d'obtenir la durée du travail réalisé sur une version");
+            Console.WriteLine("Veuillez saisir le code de la personne afin d'obtenir sa durée de travail réalisé sur une version");
             string initial = Console.ReadLine();
             Result x = new Result();
 
@@ -159,9 +184,11 @@ namespace Job_Overview
             x.CalculDureeTravailRealise(initial, out réalisé1, out restante1, out réalisé2, out restante2); //On recupère les durées grâce au out
             Console.WriteLine("Durée réalisée par {0} sur la version 1.00 : {1}\nDurée restante : {2}\nDurée réalisée par {0} sur la version 2.00 : {3}\nDurée restante : {4}", initial, réalisé1, restante1, réalisé2, restante2);
 
-
+            Console.ReadKey();
+            Console.Clear();
 
             //Permet l'affichage des jours de retard ou d'avance sur une version
+            Console.WriteLine("État d'avancement des Versions :\n");
             Result ret = new Result();
             int retard1, retard2, pourcentage1, pourcentage2;
             double pourcentage1Retard, pourcentage2Retard;
@@ -169,27 +196,33 @@ namespace Job_Overview
             if (retard1 < 0)
             {
                 
-                Console.WriteLine("Nombre de jours de retard sur la version 1.00 : {0}\n Il y a donc {1}% de retard", Math.Abs(retard1), pourcentage1Retard);
+                Console.WriteLine("Nombre de jours de retard sur la version 1.00 : {0} j\n Il y a donc {1}% de retard", Math.Abs(retard1), pourcentage1Retard);
             }
-            else Console.WriteLine("Nombre de jours d'avance sur la version 1.00 : {0}\n Il y a donc {1}% d'avancement", retard1, pourcentage1);
+            else Console.WriteLine("Nombre de jours d'avance sur la version 1.00 : {0} j\n Il y a donc {1}% d'avancement", retard1, pourcentage1);
 
             if (retard2 < 0)
             {
 
-                Console.WriteLine("Nombre de jours de retard sur la version 2.00 : {0}\n Il y a donc {1}% de retard", Math.Abs(retard2), pourcentage2Retard);
+                Console.WriteLine("Nombre de jours de retard sur la version 2.00 : {0} j\n Il y a donc {1}% de retard", Math.Abs(retard2), pourcentage2Retard);
             }
-            else Console.WriteLine("Nombre de jours d'avance sur la version 2.00 : {0}\n Il y a donc {1}% d'avancement", retard2, pourcentage2);
+            else Console.WriteLine("Nombre de jours d'avance sur la version 2.00 : {0} j\n Il y a donc {1}% d'avancement", retard2, pourcentage2);
+
+            Console.ReadKey();
+            Console.Clear();
+
+
 
             // Affichage de la liste de la durée totale de travail par activités pour la version 1
             Result listeb = new Result();
-            Console.WriteLine("\nAffichade de la liste de la durée totale de travail par activités pour la version 1");
+            Console.WriteLine("\nAffichade de la liste de la durée totale de travail par activités pour la version 1.00");
             Console.WriteLine(listeb.CalculDureeTotal1());
 
             // Affichage de la liste de la durée totale de travail par activités pour la version 2
-            Console.WriteLine("\nAffichade de la liste de la durée totale de travail par activités pour la version 1");
+            Console.WriteLine("\nAffichade de la liste de la durée totale de travail par activités pour la version 2.00");
             Console.WriteLine(listeb.CalculDureeTotal2());
 
             Console.ReadKey();
+            Console.Clear();
         }
 
 
