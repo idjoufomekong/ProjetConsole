@@ -78,25 +78,34 @@ namespace Job_Overview
         /// Calcul de la duree restant de travail en retranchant la durée qui est prévue à celle deja passée sur le projet 
         /// </summary>
  
-        public void CalculNombreJour( out int nbrJour)
+        public void CalculNombreJour( out int nbrJour, out int nbrJour2, out int pourcentage1, out int pourcentage2, out double pourcentage1Retard, out double pourcentage2Retard)
         {
 
 
             Dal v = new Dal();
             v.ChargerDonnées();
             List<DonnéesTâcheProd> m = v.Data;
-           
+           //On cherche dans la version 1 la durée du travail réalisé et la durée restante
             var personne1 = m.Where(c => c.Version == "1.00"); 
             var réalisé = personne1.Sum(c => c.DuréeRéalisée); 
             var prévue = personne1.Sum(c => c.DuréePrévue);
 
             nbrJour = prévue - réalisé;
+            //on calcul le pourcentage de retard ou d'avancement pour la version 2.00
+            pourcentage1 = réalisé * 100 / prévue;
+            pourcentage1Retard = (réalisé-prévue) * 100 / prévue;
 
 
+            //On cherche dans la version 2 la durée du travail réalisé et la durée restante
+            var personne2 = m.Where(c => c.Version == "2.00");
+            var réalisé2 = personne2.Sum(c => c.DuréeRéalisée);
+            //on calcul le pourcentage de retard ou d'avancement pour la version 2.00
+            var prévue2 = personne2.Sum(c => c.DuréePrévue);
 
-            //int _nombreJours = DuréePrévue - _dureeTravailRealise;
-            //// Calcul du pourcentage d'avancement du projet. si le pourcentage > 100 alors il y a du retard.
-            //int PourcentageAvanceRetard = (_dureeTravailRealise * 100 / DuréePrévue);
+            nbrJour2 = prévue2 - réalisé2;
+            pourcentage2 = réalisé2 * 100 / prévue2;
+            pourcentage2Retard = (réalisé2 - prévue2) * 100 / prévue2;
+
         }
 
         public void CalculDureeTotal()

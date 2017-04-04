@@ -148,6 +148,9 @@ namespace Job_Overview
             }
 
 
+
+
+            //Permet d'afficher les durées du travail restant et réalisé par une personne en rentrant son initial
             Console.WriteLine("Veuillez saisir l'initial du prenom de la personne souhaité puis le nom afin d'obtenir la durée du travail réalisé sur une version");
             string initial = Console.ReadLine();
             Result x = new Result();
@@ -156,14 +159,29 @@ namespace Job_Overview
             x.CalculDureeTravailRealise(initial, out réalisé1, out restante1, out réalisé2, out restante2); //On recupère les durées grâce au out
             Console.WriteLine("Durée réalisée par {0} sur la version 1.00 : {1}\nDurée restante : {2}\nDurée réalisée par {0} sur la version 2.00 : {3}\nDurée restante : {4}", initial, réalisé1, restante1, réalisé2, restante2);
 
+
+
+            //Permet l'affichage des jours de retard ou d'avance sur une version
             Result ret = new Result();
-            int retard;
-            ret.CalculNombreJour(out retard);
-            Console.WriteLine("Nombre de jours d'avance ou de retard : {0}", retard);
+            int retard1, retard2, pourcentage1, pourcentage2;
+            double pourcentage1Retard, pourcentage2Retard;
+            ret.CalculNombreJour(out retard1, out retard2, out pourcentage1, out pourcentage2, out pourcentage1Retard, out pourcentage2Retard);
+            if (retard1 < 0)
+            {
+                
+                Console.WriteLine("Nombre de jours de retard sur la version 1.00 : {0}\n Il y a donc {1}% de retard", Math.Abs(retard1), pourcentage1Retard);
+            }
+            else Console.WriteLine("Nombre de jours d'avance sur la version 1.00 : {0}\n Il y a donc {1}% d'avancement", retard1, pourcentage1);
+
+            if (retard2 < 0)
+            {
+
+                Console.WriteLine("Nombre de jours de retard sur la version 2.00 : {0}\n Il y a donc {1}% de retard", Math.Abs(retard2), pourcentage2Retard);
+            }
+            else Console.WriteLine("Nombre de jours d'avance sur la version 2.00 : {0}\n Il y a donc {1}% d'avancement", retard2, pourcentage2);
 
 
-
-           Console.ReadKey();
+            Console.ReadKey();
         }
 
 
