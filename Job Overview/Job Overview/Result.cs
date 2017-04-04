@@ -44,7 +44,7 @@ namespace Job_Overview
         /// </summary>
         public void CalculDureeTravailRealise(string initial, out int réalisé1, out int restant1, out int réalisé2, out int restant2)
         {
-
+            //TODO faire un système d'erreur si les initiales ne correspondent pas à une personne de la liste
             Dal v = new Dal();
             v.ChargerDonnées();
             List<DonnéesTâcheProd> m = v.Data;
