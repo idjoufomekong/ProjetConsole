@@ -19,17 +19,7 @@ namespace Job_Overview
         private int _nombreJours;
         private int PourcentageAvanceRetard;
         int _dureeTravailTotal;
-        int _dureeDBE;
-        int _dureeARF;
-        int _dureeANF;
-        int _dureeDES;
-        int _dureeINF;
-        int _dureeART;
-        int _dureeANT;
-        int _dureeDEV;
-        int _dureeRPT;
-        int _dureeTES;
-        int _dureeGDP;
+  
         #endregion
 
         #region Propriétés
@@ -108,15 +98,6 @@ namespace Job_Overview
 
         }
 
-        public void CalculDureeTotal()
-        {
-
-            //TODO utiliser les durée de travail par activités fournie dans le tableau pour déterminer les différentes durées de travail par activité
-            int _dureeTravailTotal = _dureeDBE + _dureeARF + _dureeANF + _dureeDES + _dureeINF + _dureeART + _dureeANT + _dureeDEV + _dureeRPT + _dureeTES + _dureeGDP;
-
-
-
-        }
         #endregion
     }
 }
