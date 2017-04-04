@@ -10,8 +10,47 @@ namespace Job_Overview
     {
         static void Main(string[] args)
         {
+            List<Employé> employés = new List<Employé>();
 
-            
+            Employé e1 = new Employé("GL", "Geneviève", "LECLERCQ", "ANA");
+            employés.Add(e1);
+            Employé e2 = new Employé("GL", "Geneviève", "LECLERCQ", "ANA");
+            employés.Add(e2);
+            Employé e3= new Employé("GL", "Geneviève", "LECLERCQ", "CDP");
+            employés.Add(e3);
+            Employé e4 = new Employé("GL", "Geneviève", "LECLERCQ", "DEV");
+            employés.Add(e4);
+            Employé e5 = new Employé("GL", "Geneviève", "LECLERCQ", "DES");
+            employés.Add(e5);
+            Employé e6 = new Employé("GL", "Geneviève", "LECLERCQ", "DEV");
+            employés.Add(e6);
+            Employé e7 = new Employé("GL", "Geneviève", "LECLERCQ", "DES");
+            employés.Add(e7);
+            Employé e8 = new Employé("GL", "Geneviève", "LECLERCQ", "TES");
+            employés.Add(e6);
+            Employé e9 = new Employé("GL", "Geneviève", "LECLERCQ", "TES");
+            employés.Add(e7);
+
+            List<Version> versions1 = new List<Version>();
+            Version v1 = new Version
+            {
+                Numéro = "1.00",
+                Millésime = 2017,
+                DateDébut = new DateTime(02, 01, 16),
+                DatePubli = new DateTime(08, 01, 17)
+            };
+            versions1.Add(v1);
+            Version v2 = new Version
+            {
+                Numéro = "2.00",
+                Millésime = 2018,
+                DateDébut = new DateTime(28, 12, 16),
+                DatePubli = new DateTime()
+            };
+            versions1.Add(v2);
+
+
+
 
 
             int nombre = 1; // declaration et initialisation de nombre

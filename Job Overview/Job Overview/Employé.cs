@@ -13,6 +13,7 @@ namespace Job_Overview
         private string _prenom;
         private Activités _statut;
         private string _code;
+        private string _métier;
         private int _CumulTempsTA;
         #endregion
 
@@ -22,21 +23,23 @@ namespace Job_Overview
         public string Nom { get;  }
         public string Prenom { get;  }
         /// <summary>
-        /// Le statut correspond au métier de l'employé
+        /// Le statut correspond aux activités de l'employé
         /// </summary>
         public Activités Statut { get; set; }
+        public string Métier{ get; }
         public string Code
         {
-            get {
+            get
+            {
                 return _code;
             }
             set
             {
                 string a = _nom;
-                string b = _prenom;
-                char[] c = a.ToCharArray();
-                char[] d = b.ToCharArray();
-                a = d[0].ToString() + c[0].ToString();
+                //string b = _prenom;
+                //char[] c = a.ToCharArray();
+                //char[] d = b.ToCharArray();
+                //a = d[0].ToString() + c[0].ToString();
                 _code = a;
             }
         }
@@ -58,6 +61,16 @@ namespace Job_Overview
             Statut = statut;
             Code = code;
         }
+        public Employé(string code, string nom, string prenom, string métier)
+        {
+            Nom = nom;
+            Prenom = prenom;
+            Métier = métier;
+            Code = code;
+        }
+
+
+
         #endregion
 
         #region Méthodes
