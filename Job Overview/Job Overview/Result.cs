@@ -19,17 +19,7 @@ namespace Job_Overview
         private int _nombreJours;
         private int PourcentageAvanceRetard;
         int _dureeTravailTotal;
-        int _dureeDBE;
-        int _dureeARF;
-        int _dureeANF;
-        int _dureeDES;
-        int _dureeINF;
-        int _dureeART;
-        int _dureeANT;
-        int _dureeDEV;
-        int _dureeRPT;
-        int _dureeTES;
-        int _dureeGDP;
+ 
         #endregion
 
         #region Propriétés
