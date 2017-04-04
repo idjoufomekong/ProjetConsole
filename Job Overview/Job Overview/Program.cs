@@ -63,7 +63,6 @@ namespace Job_Overview
 
             Console.Clear();
 
-
             foreach (var a in EntréeTaches)
             {
                 Console.WriteLine("Code : {0}\nLibellé {1}\n\n", a.Key, a.Value);
