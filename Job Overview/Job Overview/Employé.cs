@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Job_Overview
 {
-    class Employé
+    public class Employé
     {
         #region Champs privés
         private string _nom;
