@@ -14,7 +14,7 @@ namespace Job_Overview
         private DateTime _dateDébut;
         private DateTime _dateFin;
         private int _duréePrévue;
-        private int _dureeTravailRealise;
+        private int _sommeTravailRealise;
         private DateTime _dureeRestante;
         private int _nombreJours;
         private int PourcentageAvanceRetard;
@@ -52,9 +52,10 @@ namespace Job_Overview
         /// <summary>
         /// Calcul de la duree du travail realise en retranchant la date de fin de travail à celle du début
         /// </summary>
-        public void CalculDureeTravailRealise()
+        public void SommeDureeTravailRealise() 
         {
-            TimeSpan _dureeTravailRealise = _dateFin - _dateDébut;
+            //TimeSpan _dureeTravailRealise = _dateFin - _dateDébut;
+
         }
 
         /// <summary>
@@ -64,14 +65,14 @@ namespace Job_Overview
         {
             //TODO retrouver dans le tableau les différentes durées
             //TimeSpan dureeTravailRealise = Convert.ToDateTime(_dureeTravailRealise.ToString());
-            int _dureeRestante = _duréePrévue - _dureeTravailRealise;
+            int _dureeRestante = _duréePrévue - _sommeTravailRealise;
 
         }
         public void CalculNombreJour()
         {
-            int _nombreJours = DuréePrévue - _dureeTravailRealise;
+            int _nombreJours = DuréePrévue - _sommeTravailRealise;
             // Calcul du pourcentage d'avancement du projet. si le pourcentage > 100 alors il y a du retard.
-            int PourcentageAvanceRetard = (_dureeTravailRealise * 100 / DuréePrévue);
+            int PourcentageAvanceRetard = (_sommeTravailRealise * 100 / DuréePrévue);
         }
 
         public void CalculDureeTotal()
