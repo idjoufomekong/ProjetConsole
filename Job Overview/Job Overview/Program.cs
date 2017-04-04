@@ -180,6 +180,14 @@ namespace Job_Overview
             }
             else Console.WriteLine("Nombre de jours d'avance sur la version 2.00 : {0}\n Il y a donc {1}% d'avancement", retard2, pourcentage2);
 
+            // Affichage de la liste de la durée totale de travail par activités pour la version 1
+            Result listeb = new Result();
+            Console.WriteLine("\nAffichade de la liste de la durée totale de travail par activités pour la version 1");
+            Console.WriteLine(listeb.CalculDureeTotal1());
+
+            // Affichage de la liste de la durée totale de travail par activités pour la version 2
+            Console.WriteLine("\nAffichade de la liste de la durée totale de travail par activités pour la version 1");
+            Console.WriteLine(listeb.CalculDureeTotal2());
 
             Console.ReadKey();
         }
