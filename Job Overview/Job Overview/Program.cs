@@ -11,14 +11,13 @@ namespace Job_Overview
         static void Main(string[] args)
         {
 
+            
+
+
             int nombre = 1; // declaration et initialisation de nombre
 
             SortedList<int, string> EntréeTaches = new SortedList<int, string>();
-            /// <summary>
-            /// creation d'une boucle afin de rentrer la liste des taches par l'utilisateur. 
-            /// l'utilisateur doit rentrer le chiffre 0 s'il a terminé d'entrer ses activités annexes
-            /// </summary>
-
+             
             while (nombre != 0)
 
             {
