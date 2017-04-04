@@ -86,7 +86,7 @@ namespace Job_Overview
         {
             //DonnéesTâcheProd données = new DonnéesTâcheProd();
             
-            var b = Data.Select(c => c.Version).Distinct();
+            var b = Data.Select(c => c.Version).Distinct();//Liste des versions uniques
             int nbreVersion = b.Count();
             List<string> s = new List<string>();
 
@@ -111,23 +111,23 @@ namespace Job_Overview
             List<string> listeMétiers = new List<string>();
             List<string> listeMétiers1 = new List<string>();
             var personnes = Data.Select(c => c.Personne).Distinct(); //Liste unique de personnes
-            //var activités = Data.Select(c => c.Activité).Distinct();
+            
             List<string> liste1 = new List<string>();
-           // List<string, List<string>> liste2 = new List<string, List<string>>();
+           
             foreach ( var a in personnes)
             {
                 Activités l;
                 var activités = Data.Where(c => c.Personne == a).Select(c => c.Activité).Distinct();
                 liste1 = activités.ToList();
                 l = Activités.Aucun;
-                //l = l | (Activités) Enum.Parse(typeof(Activités), liste1.First());
+                
                 foreach (var b in liste1)
                 {
                     l = l | (Activités)Enum.Parse(typeof(Activités), b);
                     
                 }
                 p = m.RetournerMétier(l);
-                //if (p.Contains("")) continue;
+              
                 listeMétiers.Add(p);
                 
                 
@@ -208,7 +208,69 @@ namespace Job_Overview
             }
             return liste;
         }
+        /// <summary>
+        /// Retour de la liste des durées de travail par personne
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string, List<int>> ListeDuréesRéalisées()
+        {
+            Metier m = new Metier();
+            string p;
+            string s = string.Empty;
+            List<int> listeDuréesréalisée = new List<int>();
+            Dictionary<string, List<int>> dico = new Dictionary<string, List<int>>();
+            var personnes = Data.Select(c => c.Personne).Distinct(); //Liste unique de personnes
 
+            List<string> liste1 = new List<string>();
+
+            foreach (var a in personnes)
+            {
+                int l;
+                var durée = Data.Where(c => c.Personne == a).Select(c => c.DuréeRéalisée);
+                                
+                foreach (var b in durée)
+                {
+                    l = (int) b;
+                    listeDuréesréalisée.Add(l);
+                }
+                
+                dico.Add(a, listeDuréesréalisée);//a est le code (clé) du dictionnaire et la 
+                //valeur est la liste des durées réalisées par a
+
+            }
+            
+            return dico;
+
+        }
+
+        public Dictionary<string, int> SommeDuréesRéaliséesParE()
+        {
+            
+            List<int> listeDuréesréalisée = new List<int>();
+            Dictionary<string, int> dico = new Dictionary<string, int>();
+            var personnes = Data.Select(c => c.Personne).Distinct(); //Liste unique de personnes
+
+            List<string> liste1 = new List<string>();
+
+            foreach (var a in personnes)
+            {
+                int l=0;
+                var durée = Data.Where(c => c.Personne == a).Select(c => c.DuréeRéalisée);
+
+                foreach (var b in durée)
+                {
+                    l += b;
+                    
+                }
+
+                dico.Add(a, l);//a est le code (clé) du dictionnaire et la 
+                //valeur est la liste des durées réalisées par a
+
+            }
+
+            return dico;
+
+        }
         #endregion
     }
         
