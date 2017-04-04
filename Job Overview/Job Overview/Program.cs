@@ -80,8 +80,8 @@ namespace Job_Overview
                 CodeEmployé = "GL"
             };
             listeprod.Add(t3);
-
-            Console.WriteLine(t3.ModificationDureeRestante(10));
+            //appel changement de la durée restante à 10 jours
+            Console.WriteLine("Après modification, {0}",t3.ModificationDureeRestante(10));
 
             Console.ReadKey();
             Console.Clear();
@@ -102,8 +102,8 @@ namespace Job_Overview
                 
             };
             TacheAnnexe.TacheA.Add(tA2);
-
-            TacheAnnexe tA3 = new TacheAnnexe("Tache 3", 82, 55, new DateTime(2017, 5, 5,0,0,0,0))
+            DateTime date1 = new DateTime(2017,11,05);
+            TacheAnnexe tA3 = new TacheAnnexe("Tache 3", 82, 55, date1)
             {
                 CodeEmployé = "HK"
             };

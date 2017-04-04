@@ -40,6 +40,7 @@ namespace Job_Overview
 
         #endregion
         #region Méthodes publiques
+        //calcul du temps passé par un employé sur les activités annexe
         public string CumulTacheAEmployé(string code)
         {
 
@@ -55,6 +56,7 @@ namespace Job_Overview
 
         }
 
+        //Calcul du cumul de temps passé sur un activité
         public string CumulTaches(string taches)
         {
 
@@ -69,6 +71,8 @@ namespace Job_Overview
             return string.Format("Le cumul de temps passé sur l'activité annexe {0} est de {1} j", taches, cumul);
 
         }
+
+        //Cumul de temps passé sur une activité en un mois
         public string CumulTachesMois(string taches)
         {
 
