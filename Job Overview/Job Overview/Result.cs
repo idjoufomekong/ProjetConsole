@@ -19,7 +19,17 @@ namespace Job_Overview
         private int _nombreJours;
         private int PourcentageAvanceRetard;
         int _dureeTravailTotal;
-  
+        int _dureeDBE;
+        int _dureeARF;
+        int _dureeANF;
+        int _dureeDES;
+        int _dureeINF;
+        int _dureeART;
+        int _dureeANT;
+        int _dureeDEV;
+        int _dureeRPT;
+        int _dureeTES;
+        int _dureeGDP;
         #endregion
 
         #region Propriétés
@@ -97,7 +107,54 @@ namespace Job_Overview
             pourcentage2Retard = (réalisé2 - prévue2) * 100 / prévue2;
 
         }
+        /// <summary>
+        /// Durée totale  de travail réalisés sur la production de la version 1 pour chaque activité
+        /// </summary>
+        public string CalculDureeTotal1()
+        {
+            string s = string.Empty;
+            Dal v = new Dal();
+            v.ChargerDonnées();
+            List<DonnéesTâcheProd> m = v.Data;
+            Dictionary<string, int> version1 = new Dictionary<string, int>();
+            
+            var selection = m.Select(c => c.Activité).Distinct();
+            foreach(var a in selection)
+            {
+                var durée = m.Where(c => c.Activité == a && c.Version == "1.00").Sum(c => c.DuréeRéalisée);
+                version1.Add(a, durée);
+          
+            }
+            foreach (var a in version1)
+            {
+               s = s + string.Format("\nL'activité {0} a mis {1} j", a.Key, a.Value);
+            }
+            return s;
+           
+        }
 
+        public string CalculDureeTotal2()
+        {
+            string s = string.Empty;
+            Dal v = new Dal();
+            v.ChargerDonnées();
+            List<DonnéesTâcheProd> m = v.Data;
+            Dictionary<string, int> version2 = new Dictionary<string, int>();
+
+
+            var selection = m.Select(c => c.Activité).Distinct();
+            foreach (var a in selection)
+            {
+                var durée = m.Where(c => c.Activité == a && c.Version == "2.00").Sum(c => c.DuréeRéalisée);
+                version2.Add(a, durée);
+            }
+            foreach (var a in version2)
+            {
+                s = s + string.Format("\nL'activité {0} a mis {1} j", a.Key, a.Value);
+            }
+            return s;
+
+        }
         #endregion
     }
 }
