@@ -11,13 +11,13 @@ namespace Job_Overview
         static void Main(string[] args)
         {
 
-            
+
 
 
             int nombre = 1; // declaration et initialisation de nombre
 
             SortedList<int, string> EntréeTaches = new SortedList<int, string>();
-             
+
             while (nombre != 0)
 
             {
@@ -27,7 +27,7 @@ namespace Job_Overview
                 Console.WriteLine("Veuillez saisir le code de la tache a ajouter :");
                 try
                 {
-                    string test; 
+                    string test;
                     b = int.Parse(Console.ReadLine());
                     //pour le code b y a t-il un string deja existant dans EntréeTaches ?
                     codeUnique = EntréeTaches.TryGetValue(b, out test);
@@ -81,12 +81,12 @@ namespace Job_Overview
             Console.WriteLine("Le logiciel {0} compte {1} versions qui sont: {2}",
                 données.Logiciel, versions.Count(), s);
 
-            
+
             //Affichage de la liste des métiers et activités associées
             List<string> métiers = données.MétiersEtActivités();
             Console.WriteLine("La liste des métiers est la suivante");
-            
-            foreach(var a in métiers)
+
+            foreach (var a in métiers)
             {
                 Console.WriteLine(a.ToString());
             }
@@ -109,7 +109,23 @@ namespace Job_Overview
                 Console.WriteLine(a.ToString());
             }
 
-            Console.ReadKey();
+
+            Console.WriteLine("Veuillez saisir l'initial du prenom de la personne souhaité puis le nom afin d'obtenir la durée du travail réalisé sur une version");
+            string initial = Console.ReadLine();
+            Result x = new Result();
+
+            int réalisé1, restante1, réalisé2, restante2; // création de variables int por recevoir la durée total du travail réalisé et restante
+            x.CalculDureeTravailRealise(initial, out réalisé1, out restante1, out réalisé2, out restante2); //On recupère les durées grâce au out
+            Console.WriteLine("Durée réalisée par {0} sur la version 1.00 : {1}\nDurée restante : {2}\nDurée réalisée par {0} sur la version 2.00 : {3}\nDurée restante : {4}", initial, réalisé1, restante1, réalisé2, restante2);
+
+            Result ret = new Result();
+            int retard;
+            ret.CalculNombreJour(out retard);
+            Console.WriteLine("Nombre de jours d'avance ou de retard : {0}", retard);
+
+
+
+           Console.ReadKey();
         }
 
 

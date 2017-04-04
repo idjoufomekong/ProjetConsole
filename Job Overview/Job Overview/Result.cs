@@ -52,29 +52,51 @@ namespace Job_Overview
         /// <summary>
         /// Calcul de la duree du travail realise en retranchant la date de fin de travail à celle du début
         /// </summary>
-        public void CalculDureeTravailRealise()
+        public void CalculDureeTravailRealise(string initial, out int réalisé1, out int restant1, out int réalisé2, out int restant2)
         {
+
             Dal v = new Dal();
+            v.ChargerDonnées();
             List<DonnéesTâcheProd> m = v.Data;
-            v.v
-            TimeSpan _dureeTravailRealise = _dateFin - _dateDébut;
+
+            var selection = m.Select(c => c.Personne == initial);
+            var personne1 = m.Where(c => c.Personne == initial && c.Version == "1.00"); // On recupère une liste de personnes 
+            //correspondant aux initales saisies par l'utilisateur et on selectionne la version 1.00
+            réalisé1 = personne1.Sum(c => c.DuréeRéalisée); //Somme de la durée de travail réalisé par la personne
+            restant1 = personne1.Sum(c => c.DuréeRestante); //Somme de la durée de travail restante par la personne
+         
+            var personne2 = m.Where(c => c.Personne == initial && c.Version == "2.00"); // On recupère une liste de personnes 
+            //correspondant aux initales saisies par l'utilisateur et on selectionne la version 1.00
+            réalisé2 = personne2.Sum(c => c.DuréeRéalisée); //Somme de la durée de travail réalisé par la personne
+            restant2 = personne2.Sum(c => c.DuréeRestante); //Somme de la durée de travail restante par la personne
+
+
+
         }
 
         /// <summary>
         /// Calcul de la duree restant de travail en retranchant la durée qui est prévue à celle deja passée sur le projet 
         /// </summary>
-        public void CalculDureeRestante()
+ 
+        public void CalculNombreJour( out int nbrJour)
         {
-            //TODO retrouver dans le tableau les différentes durées
-            //TimeSpan dureeTravailRealise = Convert.ToDateTime(_dureeTravailRealise.ToString());
-            int _dureeRestante = _duréePrévue - _dureeTravailRealise;
 
-        }
-        public void CalculNombreJour()
-        {
-            int _nombreJours = DuréePrévue - _dureeTravailRealise;
-            // Calcul du pourcentage d'avancement du projet. si le pourcentage > 100 alors il y a du retard.
-            int PourcentageAvanceRetard = (_dureeTravailRealise * 100 / DuréePrévue);
+
+            Dal v = new Dal();
+            v.ChargerDonnées();
+            List<DonnéesTâcheProd> m = v.Data;
+           
+            var personne1 = m.Where(c => c.Version == "1.00"); 
+            var réalisé = personne1.Sum(c => c.DuréeRéalisée); 
+            var prévue = personne1.Sum(c => c.DuréePrévue);
+
+            nbrJour = prévue - réalisé;
+
+
+
+            //int _nombreJours = DuréePrévue - _dureeTravailRealise;
+            //// Calcul du pourcentage d'avancement du projet. si le pourcentage > 100 alors il y a du retard.
+            //int PourcentageAvanceRetard = (_dureeTravailRealise * 100 / DuréePrévue);
         }
 
         public void CalculDureeTotal()
