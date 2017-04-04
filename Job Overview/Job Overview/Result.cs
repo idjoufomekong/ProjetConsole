@@ -54,6 +54,9 @@ namespace Job_Overview
         /// </summary>
         public void CalculDureeTravailRealise()
         {
+            Dal v = new Dal();
+            List<DonnéesTâcheProd> m = v.Data;
+            v.v
             TimeSpan _dureeTravailRealise = _dateFin - _dateDébut;
         }
 
