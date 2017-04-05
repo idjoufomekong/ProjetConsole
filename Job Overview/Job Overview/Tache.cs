@@ -10,11 +10,11 @@ namespace Job_Overview
     {
 
         #region Champs privés
-        private int _codeTâche;
-        private string _libelléTâche;
-        private int _duréeTâche;
-        private DateTime _dateDébut;
-        private DateTime _dateFin;
+        protected int _codeTâche;
+        protected string _libelléTâche;
+        protected int _duréeTâche;
+        protected DateTime _dateDébut;
+        protected DateTime _dateFin;
         #endregion
         #region Propriétés
         public int CodeTâche { get { return _codeTâche; } }
@@ -32,6 +32,15 @@ namespace Job_Overview
         {
             _codeTâche = code;
             _libelléTâche = libellé;
+        }
+        public Tache(string libellé, int code, int durée) : this(libellé, code)
+        {
+            _duréeTâche = durée;
+        }
+        public Tache(string libellé, int code, int durée, DateTime dateDebut) : this(libellé, code, durée)
+        {
+            _dateDébut = dateDebut; 
+
         }
         #endregion
         #region Méthode public

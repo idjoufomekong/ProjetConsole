@@ -20,13 +20,13 @@ namespace Job_Overview
 
 
         #region Propriétés
-        public string Nom { get;  }
-        public string Prenom { get;  }
+        public string Nom { get; }
+        public string Prenom { get; }
         /// <summary>
         /// Le statut correspond aux activités de l'employé
         /// </summary>
         public Activités Statut { get; set; }
-        public string Métier{ get; }
+        public string Métier { get; }
         public string Code
         {
             get
@@ -43,10 +43,11 @@ namespace Job_Overview
                 _code = a;
             }
         }
+
         #endregion
 
         #region constructeurs
-        public Employé (string nom, string prenom, Activités statut)
+        public Employé(string nom, string prenom, Activités statut)
         {
             Nom = nom;
             Prenom = prenom;
@@ -73,13 +74,13 @@ namespace Job_Overview
 
         #endregion
 
-        #region Méthodes
+        #region Méthodes publiques
         /// <summary>
         /// Méthode qui calcul de cumul de temps passés sur les taches annexes
         /// </summary>
         public void CalculCumulTA()
         {
-
+            List<TacheAnnexe> e1 = new List<TacheAnnexe>();
 
         }
 
