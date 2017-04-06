@@ -19,7 +19,7 @@ namespace Job_Overview
         #endregion
 
         #region propriétés
-        public int Numéro { get; set; }
+        public string Numéro { get; set; }
         public int Millésime { get; set; }
         public DateTime DateDébut { get; set; }
         public DateTime DatePubli { get; set; }
