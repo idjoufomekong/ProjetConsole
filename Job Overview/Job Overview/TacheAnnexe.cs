@@ -31,7 +31,7 @@ namespace Job_Overview
         {
 
         }
-        public TacheAnnexe(string libellé, int code, int durée, DateTime dateDebut) : base(libellé, code, durée)
+        public TacheAnnexe(string libellé, int code, int durée, DateTime dateDebut) : base(libellé, code, durée, dateDebut)
         {
 
         }
@@ -79,11 +79,11 @@ namespace Job_Overview
             string s = string.Empty;
 
             List<TacheAnnexe> tacheMois = new List<TacheAnnexe>();
-            var Mois = TacheA.Select(c => c._dateDébut.Month).Distinct();
+            var Mois = TacheA.Select(c => c._dateDébut).Distinct();
             int cumul = 0;
             foreach (var a in Mois)
             {
-                var tache = TacheA.Where(c => c._dateDébut.Month == a);
+                var tache = TacheA.Where(c => c._dateDébut == a);
                 foreach (var b in tache)
                 {
                     if (taches.CompareTo(b._libelléTâche) == 0)
@@ -91,7 +91,7 @@ namespace Job_Overview
                         cumul += b._duréeTâche;
                     }
                 }
-                s += string.Format("\nLe cumul de temps passé sur l'activité annexe {0} est de {1} j durant le mois de {2}", taches, cumul, a);
+                s += string.Format("\nLe cumul de temps passé sur l'activité annexe {0} est de {1} j durant le mois de {2}", taches, cumul, a.ToString("MMMM"));
             }
             return s;
 
