@@ -14,17 +14,17 @@ namespace JobOverviewBis
     public enum ActivitésProd
     {
         Aucun = 0,
-        DBE = 1,
-        ARF = 2,
-        ANF = 4,
-        DES = 8,
-        INF = 16,
-        ART = 32,
-        ANT = 64,
-        DEV = 128,
-        RPT = 256,
-        TES = 512,
-        GDP = 1024
+        DéfinitionBesoins = 1,
+        ArchitectureFonctionnelle = 2,
+        AnalyseFonctionnelle = 4,
+        Design = 8,
+        Infographie = 16,
+        ArchitectureTechnique = 32,
+        AnalyseTechnique = 64,
+        Développement = 128,
+        RédactionPlanTest = 256,
+        Test = 512,
+        GestionProjet = 1024
     }
 
     #endregion

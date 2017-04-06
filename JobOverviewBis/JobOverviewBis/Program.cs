@@ -12,6 +12,32 @@ namespace JobOverviewBis
         {
             AfficherActivités();
 
+            //Affichage de quelques résultats de suivi de production
+            Console.WriteLine();
+            Console.WriteLine("Réultats du suivi de production");
+            try
+            {
+                var res = new Results(@"..\..\Data.txt");
+
+                int réalisé, restant;
+                string pers = "GL";
+                res.DuréesTravail("2.00", pers, out réalisé, out restant);
+
+                Console.WriteLine("Sur la version {0}, {1} a fait {2}j, et il lui en reste {3}",
+                    2018, pers, réalisé, restant);
+
+                var travail = res.TravailRéaliséParActivité("1.00");
+                Console.WriteLine();
+                Console.WriteLine("Travail réalisé sur la version 1.00 par activité :");
+                foreach (var kvp in travail)
+                    Console.WriteLine(" - {0} : {1}j", kvp.Key, kvp.Value);
+
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                Console.WriteLine("Fichier de données Data.txt introuvable");
+            }
+
             Console.ReadKey();
             Console.Clear();
         }

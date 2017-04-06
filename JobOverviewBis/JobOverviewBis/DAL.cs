@@ -26,27 +26,27 @@ namespace JobOverviewBis
 
             //Entrée métiers
             Métiers = new Dictionary<string, Metier>();
-            Métiers.Add("ANA",new Metier("ANA","Analyste",ActivitésProd.DBE| ActivitésProd.ARF | 
-                ActivitésProd.ANF));
-            Métiers.Add("CDP",new Metier("CDP", "Chef de projet", ActivitésProd.ART | ActivitésProd.ARF |
-                ActivitésProd.ANF| ActivitésProd.TES | ActivitésProd.GDP));
-            Métiers.Add("DEV",new Metier("DEV", "Développeur", ActivitésProd.TES | ActivitésProd.DEV |
-                ActivitésProd.ANF | ActivitésProd.ART | ActivitésProd.ANT));
-            Métiers.Add("DES",new Metier("DES", "Designer", ActivitésProd.DES | ActivitésProd.INF |
-                ActivitésProd.ANF));
-            Métiers.Add("TES",new Metier("TES", "Testeur", ActivitésProd.RPT | ActivitésProd.DES));
+            Métiers.Add("ANA",new Metier("ANA","Analyste",ActivitésProd.DéfinitionBesoins| ActivitésProd.ArchitectureFonctionnelle | 
+                ActivitésProd.AnalyseFonctionnelle));
+            Métiers.Add("CDP",new Metier("CDP", "Chef de projet", ActivitésProd.ArchitectureTechnique | ActivitésProd.ArchitectureFonctionnelle |
+                ActivitésProd.AnalyseFonctionnelle| ActivitésProd.Test | ActivitésProd.GestionProjet));
+            Métiers.Add("DEV",new Metier("DEV", "Développeur", ActivitésProd.Test | ActivitésProd.Développement |
+                ActivitésProd.AnalyseFonctionnelle | ActivitésProd.ArchitectureTechnique | ActivitésProd.AnalyseTechnique));
+            Métiers.Add("DES",new Metier("DES", "Designer", ActivitésProd.Design | ActivitésProd.Infographie |
+                ActivitésProd.AnalyseFonctionnelle));
+            Métiers.Add("TES",new Metier("TES", "Testeur", ActivitésProd.RédactionPlanTest | ActivitésProd.Design));
 
             //Entrée liste des personnes
             Personnes = new Dictionary<string, Personne>();
             Personnes.Add("GL", new Personne("GL","LECLERCQ","Geneviève",Métiers["ANA"]));
-            Personnes.Add("GL", new Personne("AF", "FERRAND", "Angèle", Métiers["ANA"]));
-            Personnes.Add("GL", new Personne("BN", "NORMAND", "Balthazar", Métiers["CDP"]));
-            Personnes.Add("GL", new Personne("RF", "FISHER", "Raymond", Métiers["DEV"]));
-            Personnes.Add("GL", new Personne("LB", "BUTLER", "Lucien", Métiers["DEV"]));
-            Personnes.Add("GL", new Personne("RB", "BEAUMONT", "Roseline", Métiers["DEV"]));
-            Personnes.Add("GL", new Personne("MW", "WEBER", "Marguerite", Métiers["DES"]));
-            Personnes.Add("GL", new Personne("HK", "KLEIN", "Hilaire", Métiers["TES"]));
-            Personnes.Add("GL", new Personne("NP", "PALMER", "Nino", Métiers["TES"]));
+            Personnes.Add("AF", new Personne("AF", "FERRAND", "Angèle", Métiers["ANA"]));
+            Personnes.Add("BN", new Personne("BN", "NORMAND", "Balthazar", Métiers["CDP"]));
+            Personnes.Add("RF", new Personne("RF", "FISHER", "Raymond", Métiers["DEV"]));
+            Personnes.Add("LB", new Personne("LB", "BUTLER", "Lucien", Métiers["DEV"]));
+            Personnes.Add("RB", new Personne("RB", "BEAUMONT", "Roseline", Métiers["DEV"]));
+            Personnes.Add("MW", new Personne("MW", "WEBER", "Marguerite", Métiers["DES"]));
+            Personnes.Add("HK", new Personne("HK", "KLEIN", "Hilaire", Métiers["TES"]));
+            Personnes.Add("NP", new Personne("NP", "PALMER", "Nino", Métiers["TES"]));
 
             //Chargement des tâches dans un tableau de chaînes
             Tâches = new List<Tache>();
@@ -83,17 +83,17 @@ namespace JobOverviewBis
 
         private ActivitésProd ActivitéDeCode(string code)
         {
-            if (code == "DBE") return ActivitésProd.DBE;
-            else if (code == "ARF") return ActivitésProd.ARF;
-            else if (code == "ANF") return ActivitésProd.ANF;
-            else if (code == "DES") return ActivitésProd.DES;
-            else if (code == "INF") return ActivitésProd.INF;
-            else if (code == "ART") return ActivitésProd.ART;
-            else if (code == "ANT") return ActivitésProd.ANT;
-            else if (code == "DEV") return ActivitésProd.DEV;
-            else if (code == "RPT") return ActivitésProd.RPT;
-            else if (code == "TES") return ActivitésProd.TES;
-            else if (code == "GDP") return ActivitésProd.GDP;
+            if (code == "DBE") return ActivitésProd.DéfinitionBesoins;
+            else if (code == "ARF") return ActivitésProd.ArchitectureFonctionnelle;
+            else if (code == "ANF") return ActivitésProd.AnalyseFonctionnelle;
+            else if (code == "DES") return ActivitésProd.Design;
+            else if (code == "INF") return ActivitésProd.Infographie;
+            else if (code == "ART") return ActivitésProd.ArchitectureTechnique;
+            else if (code == "ANT") return ActivitésProd.AnalyseTechnique;
+            else if (code == "DEV") return ActivitésProd.Développement;
+            else if (code == "RPT") return ActivitésProd.RédactionPlanTest;
+            else if (code == "TES") return ActivitésProd.Test;
+            else if (code == "GDP") return ActivitésProd.GestionProjet;
             else return ActivitésProd.Aucun;
         }
 
